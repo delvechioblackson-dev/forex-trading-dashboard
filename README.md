@@ -1,70 +1,40 @@
-# 📊 Forex Trading Dashboard
+# Forex Trading Dashboard (Streamlit)
 
-Advanced Supply/Demand Zone Trading Dashboard with Order Flow Analysis
+This repo contains a Streamlit app for multi-timeframe supply/demand analysis, order flow signals, and optional news sentiment.
 
-## 🚀 Features
+## Run locally
 
-- 📈 Real-time Forex Data (USD/EUR/GBP pairs)
-- 🎯 Supply & Demand Zone Detection
-- 📊 Order Flow Analysis (Delta, Cumulative Delta, VWAP)
-- 👣 Footprint Charts
-- 💡 Multiple Trading Signal Types (1m, 5m, 15m timeframes)
-- 🧪 Backtest Zone with Fake Money
+1. Install dependencies:
 
-## 🌐 Live Demo
-
-Access the app at: `https://forex-trading-dashboard.streamlit.app` (after deployment)
-
-## 🛠️ Local Setup
-
-### Prerequisites
-- Python 3.8 or higher
-
-### Installation
-
-1. Clone the repository:
-```bash
-git clone https://github.com/delvechioblackson-dev/forex-trading-dashboard.git
-cd forex-trading-dashboard
 ```
-
-2. Create a virtual environment:
-```bash
-python3 -m venv .venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-```
-
-3. Install dependencies:
-```bash
 pip install -r requirements.txt
 ```
 
-4. Run the app:
-```bash
+2. Start the app:
+
+```
 streamlit run test.py
 ```
 
-5. Open your browser to `http://localhost:8501`
+## Deploy on Streamlit Community Cloud
 
-## 📱 Access from Phone
+1. Push this repo to GitHub.
+2. Go to https://share.streamlit.io and create a new app.
+3. Select this repo and set the entrypoint to `test.py`.
+4. Set secrets (recommended) in Streamlit Cloud:
 
-Once deployed to Streamlit Cloud, you can access the dashboard from any device using the deployment URL.
+```
+FASTFOREX_API_KEY = "your_fastforex_key"
+ALPHAVANTAGE_API_KEY = "your_alpha_vantage_key"
+NEWSDATA_API_KEY = "your_newsdata_key"
+TELEGRAM_TOKEN = "your_telegram_bot_token"
+TELEGRAM_CHAT_ID = "your_telegram_chat_id"
+```
 
-## ⚙️ Configuration
+You can also set these as environment variables in your deployment settings.
 
-- **Instrument Types**: Forex (USD/EUR/GBP) or Indices (US30, NAS100)
-- **Timeframes**: 1m, 5m, 15m analysis
-- **Analysis Options**: Supply/Demand Zones, Order Flow Signals, Technical Signals
-- **Test Zone**: Backtest signals with fake money
+## Notes
 
-## 🔑 API Key
-
-The app uses FastForex API for live forex data. Current API key is included for demo purposes.
-
-## 📄 License
-
-MIT License
-
-## 👤 Author
-
-delvechioblackson-dev
+- If `FASTFOREX_API_KEY` is not set, live FX prices will not load.
+- Alpha Vantage is optional. If missing, the app uses simulated candles.
+- Telegram alerts are optional and only sent when enabled in the sidebar.
